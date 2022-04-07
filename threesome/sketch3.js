@@ -26,16 +26,20 @@ function draw() {
   const brightness = map(y.pos, y.min, y.max, 0, 255);
   stroke(brightness);
   strokeWeight(weight);
-  line(mouseX-size, mouseY, mouseX+size, mouseY);
-  line(mouseX, mouseY-size, mouseX, mouseY+size);
+  c = {
+    x: map(mouseX, 0, windowWidth, -100, 100),
+    y: map(mouseY, 0, windowHeight, -100, 100),
+  };
+
+  const lX = mouseX + random(-c.x, c.x);
+  const lY = mouseY + random(-c.y, c.y);
+  line(lX-size, lY, lX+size, lY);
+  line(lX, lY-size, lX, lY+size);
 }
 
 function mouseClicked() {
   bgBrightness = bgBrightness === light ? dark : light;
   channel.publish(clickMessage, {
-    c : {
-      x: map(mouseX, 0, windowWidth, -100, 100),
-      y: map(mouseY, 0, windowHeight, -100, 100),
-    }
+    c : c
   });
 }
