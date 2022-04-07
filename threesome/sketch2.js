@@ -9,7 +9,7 @@ let y; // This will hold the mouse y position (and min and max values) that we'r
 
 function setup() {
   frameRate(15);
-  createCanvas(windowWidth, windowHeight);
+  createCanvas(windowWidth, windowHeight-35);
   x = { min: 0, max: windowWidth, pos: windowWidth/2 };
   y = { min: 0, max: windowHeight, pos: windowHeight/2 };
 }
@@ -25,7 +25,7 @@ function draw() {
 
 function mouseMoved() {
   if (frameCount % 5 === 0 && ably?.connection.state === "connected") {
-    channel.publish("coordinates", {
+    channel.publish(coordinatesMessage, {
       x: { min: 0, max: windowWidth, pos: mouseX },
       y: { min: 0, max: windowHeight, pos: mouseY },
     });

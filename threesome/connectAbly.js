@@ -1,6 +1,8 @@
 let ably;
 let channel;
 const channelName = "collabCreativeCoding";
+const coordinatesMessage = "coordinates";
+const clickMessage = "click";
 
 async function connectAbly() {
     const isConnected = ably?.connection.state === "connected";
@@ -17,9 +19,12 @@ async function connectAbly() {
         select("#connectButton").elt.innerText = "Connect";
       });
       channel = await ably.channels.get(channelName);
-      channel.subscribe((message) => {
+      channel.subscribe(coordinatesMessage, (message) => {
         x = message.data.x ?? x;
         y = message.data.y ?? y;
+      });
+      channel.subscribe(clickMessage, (message) => {
+        c = message.data.c ?? c;
       });
     } else {
       ably.close();

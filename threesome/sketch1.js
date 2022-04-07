@@ -6,12 +6,14 @@
 
 let x; // This will hold the mouse x position (and min and max values) that we're receiving from sketch 2.
 let y; // This will hold the mouse y position (and min and max values) that we're receiving from sketch 2.
+let c; // This will hold the a value that we're receiving from sketch 3.
 
 function setup() {
   frameRate(15);
-  createCanvas(windowWidth, windowHeight);
+  createCanvas(windowWidth, windowHeight-35);
   x = { min: 0, max: windowWidth, pos: windowWidth / 2 };
   y = { min: 0, max: windowHeight, pos: windowHeight / 2 };
+  c = { x: 10, y: 10 };
 }
 
 function draw() {
@@ -19,14 +21,14 @@ function draw() {
   const circleRadius = map(mouseX, 0, windowWidth, 10, 100);
   const brightness = map(mouseY, 0, windowHeight, 0, 255);
   fill(brightness);
-  newX = map(x.pos, x.min, x.max, 0, windowWidth) + random(-10, 10);
-  newY = map(y.pos, y.min, y.max, 0, windowHeight) + random(-10, 10);
+  newX = map(x.pos, x.min, x.max, 0, windowWidth) + random(-c.x, c.x);
+  newY = map(y.pos, y.min, y.max, 0, windowHeight) + random(-c.y, c.y);
   circle(newX, newY, circleRadius);
 }
 
 function mouseMoved() {
   if (frameCount % 5 === 0 && ably?.connection.state === "connected") {
-    channel.publish("coordinates", {
+    channel.publish(coordinatesMessage, {
       x: { min: 0, max: windowWidth, pos: mouseX },
       y: { min: 0, max: windowHeight, pos: mouseY },
     });
