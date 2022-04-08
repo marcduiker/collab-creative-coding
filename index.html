@@ -18,12 +18,13 @@
 
 <body>
   <h1>Collaborative Creative Coding with p5js & Ably</h1>
-  <p>Each sketch sends mouse/touch x & y coordinates to the other sketch.</p>
+  <p>Each sketch publishes events (mouse coordinates or clicks) that other sketches respond to.</p>
   <ul>
-    <li><a href="threesome/1.html" target="_blank">Sketch 1 - controls size & brightness</a></li>
-    <li><a href="threesome/2.html" target="_blank">Sketch 2 - controls position</a></li>
-    <li><a href="threesome/3.html" target="_blank">Sketch 3 - controls jitter</a></li>
+    <li><a href="threesome/1.html" target="_blank">Sketch 1</a> - controls size & brightness for sketch 2 & 3</li>
+    <li><a href="threesome/2.html" target="_blank">Sketch 2</a> - controls position for sketch 1</li>
+    <li><a href="threesome/3.html" target="_blank">Sketch 3</a> - controls jitter for sketch 1</li>
   </ul>
+  <p>Using the sketches collaboratively requires an Ably API key with `publish` and `subscribe` capabilities. Create a free account at <a href="https://ably.com/signup" target="_blank">ably.com</a>.</p>
 </body>
 
 </html>
