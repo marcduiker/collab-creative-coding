@@ -34,3 +34,7 @@ function mouseMoved() {
     });
   }
 }
+
+async function connectClient() {
+  await connectAbly("sketch1");
+}
