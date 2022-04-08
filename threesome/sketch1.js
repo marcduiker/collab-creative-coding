@@ -13,7 +13,7 @@ function setup() {
   createCanvas(windowWidth, windowHeight-35);
   x = { min: 0, max: windowWidth, pos: windowWidth / 2 };
   y = { min: 0, max: windowHeight, pos: windowHeight / 2 };
-  c = { x: 10, y: 10 };
+  c = { a: 10, b: 10 };
 }
 
 function draw() {
@@ -21,8 +21,8 @@ function draw() {
   const circleRadius = map(mouseX, 0, windowWidth, 10, 100);
   const brightness = map(mouseY, 0, windowHeight, 0, 255);
   fill(brightness);
-  newX = map(x.pos, x.min, x.max, 0, windowWidth) + random(-c.x, c.x);
-  newY = map(y.pos, y.min, y.max, 0, windowHeight) + random(-c.y, c.y);
+  newX = map(x.pos, x.min, x.max, 0, windowWidth) + random(-c.a, c.a);
+  newY = map(y.pos, y.min, y.max, 0, windowHeight) + random(-c.b, c.b);
   circle(newX, newY, circleRadius);
 }
 
