@@ -6,23 +6,27 @@
 
 let x; // This will hold the mouse x position (and min and max values) that we're receiving from sketch 2.
 let y; // This will hold the mouse y position (and min and max values) that we're receiving from sketch 2.
-let c; // This will hold the a value that we're receiving from sketch 3.
+let ab; // This will hold the a & b values that we're receiving from sketch 3.
+let c;
+let light = 240;
+let dark = 30;
 
 function setup() {
   frameRate(15);
-  createCanvas(windowWidth, windowHeight-35);
+  createCanvas(windowWidth, windowHeight - 35);
   x = { min: 0, max: windowWidth, pos: windowWidth / 2 };
   y = { min: 0, max: windowHeight, pos: windowHeight / 2 };
-  c = { a: 10, b: 10 };
+  ab = { a: 10, b: 10 };
+  c = true;
 }
 
 function draw() {
-  background(240, 50);
+  background(c === true ? light : dark, 50);
   const circleRadius = map(mouseX, 0, windowWidth, 10, 100);
   const brightness = map(mouseY, 0, windowHeight, 0, 255);
   fill(brightness);
-  newX = map(x.pos, x.min, x.max, 0, windowWidth) + random(-c.a, c.a);
-  newY = map(y.pos, y.min, y.max, 0, windowHeight) + random(-c.b, c.b);
+  newX = map(x.pos, x.min, x.max, 0, windowWidth) + random(-ab.a, ab.a);
+  newY = map(y.pos, y.min, y.max, 0, windowHeight) + random(-ab.b, ab.b);
   circle(newX, newY, circleRadius);
 }
 

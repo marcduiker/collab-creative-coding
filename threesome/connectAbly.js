@@ -1,8 +1,9 @@
 let ably;
 let channel;
 const channelName = "collabCreativeCoding";
-const coordinatesMessage = "coordinates";
+const coordinatesMessage = "coordinate";
 const clickMessage = "click";
+const abValueMessage = "abValue";
 
 async function connectAbly(clientId) {
   const isConnected = ably?.connection.state === "connected";
@@ -26,6 +27,9 @@ async function connectAbly(clientId) {
     channel.subscribe(coordinatesMessage, (message) => {
       x = message.data.x ?? x;
       y = message.data.y ?? y;
+    });
+    channel.subscribe(abValueMessage, (message) => {
+      ab = message.data.ab ?? ab;
     });
     channel.subscribe(clickMessage, (message) => {
       c = message.data.c ?? c;
