@@ -1,4 +1,4 @@
-/// This interactive sketch publishes mouse click events with an X and Y value between -100 and 100 to an Ably channel.
+/// This interactive sketch publishes events with an A and B value between -100 and 100 to an Ably channel.
 /// The sketch is subscribed to the same channel to listen to 'coordinate' messages
 /// and maps that to a size and brightness of a cross hair that is drawn.
 ///
