@@ -5,6 +5,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Collaborative Creative Coding with p5js & Ably</title>
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@marcduiker">
+  <meta name="twitter:creator" content="@marcduiker">
+  <meta property="og:url" content="https://thankful-river-0462fc303.1.azurestaticapps.net/">
+  <meta property="og:title" content="Collaborative Creative Coding with p5js & Ably">
+  <meta property="og:description" content="Trio: 3 sketches that interact with each other. Each sketch publishes events (mouse coordinates or clicks) that other sketches respond to.">
   <style>
     body {
       padding: 0;
@@ -24,7 +30,7 @@
   <ul>
     <li><a href="trio/1.html" target="_blank">Sketch 1</a> - controls size & brightness for sketch 2 & 3.</li>
     <li><a href="trio/2.html" target="_blank">Sketch 2</a> - controls position for sketch 1.</li>
-    <li><a href="trio/3.html" target="_blank">Sketch 3</a> - controls jitter orientation for sketch 1 & background changes for sketch 1 & 2.</li>
+    <li><a href="trio/3.html" target="_blank">Sketch 3</a> - controls jitter orientation for sketch 1, and background changes for sketch 1 & 2.</li>
   </ul>
 
   <h3>Instructions</h3>
@@ -32,7 +38,7 @@
     <li>Create a free account at <a href="https://ably.com/signup" target="_blank" rel="">ably.com</a>.</li>
     <li>Create an Ably app and copy the default API key (`Root`). Alternatively you can create a new API key with only
       `publish` and `subscribe` capabilities.</li>
-    <li>Open one of the sketches above.</li>
+    <li>Open one of the above sketches.</li>
     <li>Paste the API Key in the password field & click Connect.</li>
     <li>Have two friends join this site and let them each choose another sketch.</li>
     <li>Send them the API key so they can connect as well.</li>
