@@ -7,6 +7,8 @@
 
 let color1;
 let color2;
+let minDistance;
+let closestNeighbour;
 
 function setup() {
     frameRate(15);
@@ -14,6 +16,8 @@ function setup() {
     setTextSettings();
     color1 = color('#80FF00');
     color2 = color('#FF0080');
+    minDistance = dist23;
+    closestNeighbour = dist23Name;
     setDefaultCoordinates();
     c = true;
 }
@@ -21,13 +25,14 @@ function setup() {
 function draw() {
     const fillColor = c === true ? light : dark;
     const strokeColor = c === true ? color2 : color1;
+
     background(fillColor, 50);
     coordinate3.x.pos = mouseX;
     coordinate3.y.pos = mouseY;
     setXYValues();
     calcDistances();
 
-    drawBackground(dist23, color1, color2);
+    drawBackground(minDistance, color1, color2);
 
     stroke(strokeColor);
     fill(fillColor);
@@ -38,15 +43,25 @@ function draw() {
 
 function drawLines() {
   const maxDistance = windowWidth / 3;
-    if (dist13 < maxDistance || dist23 < maxDistance) {
+  if (dist13 < maxDistance || dist23 < maxDistance) {
       if (dist13 < dist23) {
-        strokeWeight(map(dist13, 0, maxDistance, 2, 0.5));
-        line(x1, y1, x3, y3);
+          minDistance = dist13;
+          if (closestNeighbour !== dist13Name) {
+              swapColors();
+          }
+          closestNeighbour = dist13Name;
+          strokeWeight(map(dist13, 0, maxDistance, 2, 0.5));
+          line(x1, y1, x3, y3);
       } else {
-        strokeWeight(map(dist23, 0, maxDistance, 2, 0.5));
-        line(x2, y2, x3, y3);
+          minDistance = dist23;
+          if (closestNeighbour !== dist23Name) {
+              swapColors();
+          }
+          closestNeighbour = dist23Name;
       }
-    }
+      strokeWeight(map(dist23, 0, maxDistance, 2, 0.5));
+      line(x2, y2, x3, y3);
+  }
 }
 
 function mouseMoved() {

@@ -18,6 +18,10 @@ let dist12;
 let dist13;
 let dist23;
 
+const dist12Name = 'dist12';
+const dist13Name = 'dist13';
+const dist23Name = 'dist23';
+
 function setTextSettings() {
     textFont('monospace');
     textAlign(CENTER, CENTER);
@@ -114,17 +118,29 @@ function drawBackground(distance, color1, color2) {
 function drawCircleShape() {
     const radius = map(x1, 0, windowWidth, 10, 100);
     const verticeLength = map(y1, 0, windowHeight, 0.1, 1.1);
-    const maxNoiseX = map(abs(x3-windowWidth/2), 0, windowWidth/2, 0, 30);
-    const maxNoiseY = map(abs(y3-windowHeight/2), 0, windowHeight/2, 0, 30);
+    const maxNoiseX = map(abs(x3 - windowWidth / 2), 0, windowWidth / 2, 0, 30);
+    const maxNoiseY = map(
+        abs(y3 - windowHeight / 2),
+        0,
+        windowHeight / 2,
+        0,
+        30
+    );
     push();
     translate(x2, y2);
     beginShape();
     for (let a = TWO_PI; a > -TWO_PI; a -= verticeLength) {
-      let r1 =radius;
-      let rx1 = r1 * cos(a) + random(-maxNoiseX, maxNoiseX);
-      let ry1 = r1 * sin(a) + random(-maxNoiseY, maxNoiseY);
-      vertex(rx1, ry1);
+        let r1 = radius;
+        let rx1 = r1 * cos(a) + random(-maxNoiseX, maxNoiseX);
+        let ry1 = r1 * sin(a) + random(-maxNoiseY, maxNoiseY);
+        vertex(rx1, ry1);
     }
     endShape(CLOSE);
     pop();
-  }
+}
+
+function swapColors() {
+    const temp = color1;
+    color1 = color2;
+    color2 = temp;
+}
