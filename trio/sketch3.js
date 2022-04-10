@@ -42,7 +42,7 @@ function draw() {
 }
 
 function drawLines() {
-    const maxDistance = windowWidth / 3;
+    const maxDistance = windowWidth;
     if (dist13 < maxDistance || dist23 < maxDistance) {
         if (dist13 < dist23) {
             minDistance = dist13;
