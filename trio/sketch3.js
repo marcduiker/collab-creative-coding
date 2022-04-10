@@ -1,6 +1,6 @@
-/// Each of the three interactive sketches publishes mouse coordinates 
-/// and click events to an Ably channel. The sketch is subscribed to 
-/// 'coordinate' and 'click' messages and uses this data to control 
+/// Each of the three interactive sketches publishes mouse coordinates
+/// and click events to an Ably channel. The sketch is subscribed to
+/// 'coordinate' and 'click' messages and uses this data to control
 /// different things on the shape that is drawn.
 ///
 /// Marc Duiker, @marcduiker, 2022
@@ -42,26 +42,26 @@ function draw() {
 }
 
 function drawLines() {
-  const maxDistance = windowWidth / 3;
-  if (dist13 < maxDistance || dist23 < maxDistance) {
-      if (dist13 < dist23) {
-          minDistance = dist13;
-          if (closestNeighbour !== dist13Name) {
-              swapColors();
-          }
-          closestNeighbour = dist13Name;
-          strokeWeight(map(dist13, 0, maxDistance, 2, 0.5));
-          line(x1, y1, x3, y3);
-      } else {
-          minDistance = dist23;
-          if (closestNeighbour !== dist23Name) {
-              swapColors();
-          }
-          closestNeighbour = dist23Name;
-      }
-      strokeWeight(map(dist23, 0, maxDistance, 2, 0.5));
-      line(x2, y2, x3, y3);
-  }
+    const maxDistance = windowWidth / 3;
+    if (dist13 < maxDistance || dist23 < maxDistance) {
+        if (dist13 < dist23) {
+            minDistance = dist13;
+            if (closestNeighbour !== dist13Name) {
+                swapColors();
+            }
+            closestNeighbour = dist13Name;
+            strokeWeight(map(dist13, 0, maxDistance, 2, 0.5));
+            line(x1, y1, x3, y3);
+        } else {
+            minDistance = dist23;
+            if (closestNeighbour !== dist23Name) {
+                swapColors();
+            }
+            closestNeighbour = dist23Name;
+            strokeWeight(map(dist23, 0, maxDistance, 2, 0.5));
+            line(x2, y2, x3, y3);
+        }
+    }
 }
 
 function mouseMoved() {
@@ -73,10 +73,10 @@ function mouseMoved() {
 }
 
 function mouseClicked() {
-  c = !c;
-  if (ably?.connection.state === "connected") {
-    channel.publish(clickMessage, { c });
-  }
+    c = !c;
+    if (ably?.connection.state === 'connected') {
+        channel.publish(clickMessage, { c });
+    }
 }
 
 async function connectClient() {

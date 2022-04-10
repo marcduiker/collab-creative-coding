@@ -58,9 +58,9 @@ function drawLines() {
                 swapColors();
             }
             closestNeighbour = dist23Name;
+            strokeWeight(map(dist23, 0, maxDistance, 2, 0.5));
+            line(x2, y2, x3, y3);
         }
-        strokeWeight(map(dist23, 0, maxDistance, 2, 0.5));
-        line(x2, y2, x3, y3);
     }
 }
 
