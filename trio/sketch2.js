@@ -1,41 +1,69 @@
-/// This interactive sketch publishes mouse coordinates to an Ably channel.
-/// The sketch is subscribed to the same channel to listen to 'coordinate' messages
-/// and maps that to a size and brightness of a square that is drawn.
+/// Each of the three interactive sketches publishes mouse coordinates 
+/// and click events to an Ably channel. The sketch is subscribed to 
+/// 'coordinate' and 'click' messages and uses this data to control 
+/// different things on the shape that is drawn.
 ///
 /// Marc Duiker, @marcduiker, 2022
 
-let x; // This will hold the mouse x position (and min and max values) that we're receiving from sketch 1.
-let y; // This will hold the mouse y position (and min and max values) that we're receiving from sketch 1.
-let c;
-let light = 240;
-let dark = 30;
+let color1;
+let color2;
 
 function setup() {
-  frameRate(15);
-  createCanvas(windowWidth, windowHeight - 35);
-  c = true;
-  x = { min: 0, max: windowWidth, pos: windowWidth / 2 };
-  y = { min: 0, max: windowHeight, pos: windowHeight / 2 };
+    frameRate(15);
+    createCanvas(windowWidth, windowHeight - 35);
+    setTextSettings();
+    color1 = color('#0080FF');
+    color2 = color('#80FF00');
+    setDefaultCoordinates();
+    c = true;
 }
 
 function draw() {
-  background(c === true ? light : dark, 50);
-  rectMode(CENTER);
-  const size = map(x.pos, x.min, x.max, 10, 100);
-  const brightness = map(y.pos, y.min, y.max, 0, 255);
-  fill(brightness);
-  square(mouseX, mouseY, size);
+    const fillColor = c === true ? light : dark;
+    const strokeColor = c === true ? color1 : color2;
+    background(fillColor, 50);
+    coordinate2.x.pos = mouseX;
+    coordinate2.y.pos = mouseY;
+    setXYValues();
+    calcDistances();
+
+    drawBackground(dist12, color1, color2);
+
+    stroke(strokeColor);
+    fill(fillColor);
+    drawLines();
+    drawCircleShape();
+    drawNumbers();
+}
+
+function drawLines() {
+  const maxDistance = windowWidth / 3;
+    if (dist12 < maxDistance || dist23 < maxDistance) {
+      if (dist12 < dist23) {
+        strokeWeight(map(dist12, 0, maxDistance, 2, 0.5));
+        line(x1, y1, x2, y2);
+      } else {
+        strokeWeight(map(dist23, 0, maxDistance, 2, 0.5));
+        line(x2, y2, x3, y3);
+      }
+    }
 }
 
 function mouseMoved() {
-  if (frameCount % 5 === 0 && ably?.connection.state === "connected") {
-    channel.publish(coordinatesMessage, {
-      x: { min: 0, max: windowWidth, pos: mouseX },
-      y: { min: 0, max: windowHeight, pos: mouseY },
-    });
+    if (frameCount % 5 === 0 && ably?.connection.state === 'connected') {
+        channel.publish(coordinatesMessage, {
+            coordinate2,
+        });
+    }
+}
+
+function mouseClicked() {
+  c = !c;
+  if (ably?.connection.state === "connected") {
+    channel.publish(clickMessage, { c });
   }
 }
 
 async function connectClient() {
-  await connectAbly("sketch2");
+    await connectAbly('sketch2');
 }

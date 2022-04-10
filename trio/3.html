@@ -6,16 +6,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sketch 3</title>
   <style>
-   body, button {
+    body, button {
       padding: 1 em;
       margin: 0;
       font-family: 'Courier New', Courier, monospace;
-      font-size: large;
+      font-size: normal;
+    }
+
+    canvas { 
+      cursor: none; 
     }
   </style>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.1/p5.min.js" integrity="sha512-NxocnqsXP3zm0Xb42zqVMvjQIktKEpTIbCXXyhBPxqGZHqhcOXHs4pXI/GoZ8lE+2NJONRifuBpi9DxC58L0Lw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/ably/1.2.20/ably.min.js" integrity="sha512-rxPU7JKHvFzGTw+KUXujvhHl131fuhhrH/PJ0xNxLBmczOhyw8e8byCVM8rBXn/aWwP5Bsn7xIM4H/TahqZNzw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="connectAbly.js"></script>
+  <script src="shared.js"></script>
   <script src="sketch3.js"></script>
 </head>
 
@@ -23,7 +28,7 @@
   <main>
     Ably API Key: <input aria-label="Ably API Key" id="ablyApiKey" type="password" />
     <button aria-label="Connect" id="connectButton" onclick="connectClient()">Connect</button>
-    | Click to send an event that controls the jitter in sketch 1.
+    | Move the mouse to control the jitter of the shape.
   </main>
 </body>
 
