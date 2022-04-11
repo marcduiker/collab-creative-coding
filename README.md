@@ -1,6 +1,8 @@
 # Collaborative Creative Coding
 
-Examples of collaborative creating coding sketches made with with [P5js](https://p5js.org/) and [Ably](https://ably.com/).
+Collaborative creating coding sketches made with with [P5js](https://p5js.org/) and [Ably](https://ably.com/). Each sketch publishes mouse coordinates and clicks to a channel and the other sketches respond to this data.
+
+![Screenshot of Trio](/media/3sketches.png)
 
 Play with the [live example](https://thankful-river-0462fc303.1.azurestaticapps.net/).*
 
