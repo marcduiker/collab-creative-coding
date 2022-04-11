@@ -20,15 +20,21 @@ function setup() {
     closestNeighbour = dist12Name;
     setDefaultCoordinates();
     c = true;
+    origX2 = coordinate2.x.pos;
+    origY2 = coordinate2.y.pos;
 }
 
 function draw() {
     const fillColor = c === true ? light : dark;
     const strokeColor = c === true ? color2 : color1;
-
     background(fillColor, 50);
     coordinate1.x.pos = mouseX;
     coordinate1.y.pos = mouseY;
+    const noiseOffSet = 0.1;
+    if (isSimulation) {
+        drawSimulatedCoordinate2(noiseOffSet);
+        drawSimulatedCoordinate3(noiseOffSet * 8);
+    }
     setXYValues();
     calcDistances();
 

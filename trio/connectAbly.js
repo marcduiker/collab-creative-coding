@@ -17,6 +17,8 @@ async function connectAbly(clientId) {
     ably.connection.on("connected", () => {
       console.log("Connected 🎉");
       select("#connectButton").elt.innerText = "Disconnect";
+      select("#simulationCheck").elt.checked = false;
+      isSimulation = false;
     });
     ably.connection.on("closed", () => {
       console.log("Disconnected 😿");

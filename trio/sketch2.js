@@ -25,10 +25,14 @@ function setup() {
 function draw() {
     const fillColor = c === true ? light : dark;
     const strokeColor = c === true ? color1 : color2;
-
     background(fillColor, 50);
     coordinate2.x.pos = mouseX;
     coordinate2.y.pos = mouseY;
+    const noiseOffSet = 0.1;
+    if (isSimulation) {
+        drawSimulatedCoordinate1(noiseOffSet);
+        drawSimulatedCoordinate3(noiseOffSet * 8);
+    }
     setXYValues();
     calcDistances();
 
