@@ -2,62 +2,65 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Collaborative Creative Coding with p5js & Ably</title>
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:site" content="@marcduiker">
-  <meta name="twitter:creator" content="@marcduiker">
-  <meta property="og:url" content="https://thankful-river-0462fc303.1.azurestaticapps.net/">
-  <meta property="og:title" content="Collaborative Creative Coding with p5js & Ably">
-  <meta property="og:description" content="Trio: 3 sketches that interact with each other. Each sketch publishes events (mouse coordinates or clicks) that other sketches respond to.">
-  <meta property="og:image" content="https://thankful-river-0462fc303.1.azurestaticapps.net/media/3sketches.png">
-  <meta property="og:image:width" content="1266"/>
-  <meta property="og:image:height" content="687"/>
-  <style>
-    body {
-      padding: 0;
-      margin: 1em;
-      font-family: 'Courier New', Courier, monospace;
-      font-size: large;
-      line-height: 1.6em;
-    }
-  </style>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Collaborative Creative Coding with p5js & Ably</title>
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:site" content="@marcduiker">
+	<meta name="twitter:creator" content="@marcduiker">
+	<meta property="og:url" content="https://thankful-river-0462fc303.1.azurestaticapps.net/">
+	<meta property="og:title" content="Collaborative Creative Coding with p5js & Ably">
+	<meta property="og:description"
+		content="Trio: 3 sketches that interact with each other. Each sketch publishes events (mouse coordinates or clicks) that other sketches respond to.">
+	<meta property="og:image" content="https://thankful-river-0462fc303.1.azurestaticapps.net/media/3sketches.png">
+	<meta property="og:image:width" content="1266" />
+	<meta property="og:image:height" content="687" />
+	<style>
+		body {
+			padding: 0;
+			margin: 1em;
+			font-family: 'Courier New', Courier, monospace;
+			font-size: large;
+			line-height: 1.6em;
+		}
+	</style>
 </head>
 
 <body>
-  <h1>Collaborative Creative Coding with p5js & Ably</h1>
+	<h1>Collaborative Creative Coding with p5js & Ably</h1>
 
-  <h2>Trio: 3 sketches that interact with each other</h2>
-  <p>Each sketch publishes events (mouse coordinates or clicks) that other sketches respond to.</p>
-  <ul>
-    <li><a href="trio/1.html" target="_blank">Sketch 1</a> - controls size & roundness.</li>
-    <li><a href="trio/2.html" target="_blank">Sketch 2</a> - controls position.</li>
-    <li><a href="trio/3.html" target="_blank">Sketch 3</a> - controls jitter orientation.</li>
-  </ul>
+	<h2>Trio: 3 sketches that interact with each other</h2>
+	<p>Each sketch publishes events (mouse coordinates or clicks) that other sketches respond to.</p>
+	<ul>
+		<li><a href="trio/1.html" target="_blank">Sketch 1</a> - controls size & roundness.</li>
+		<li><a href="trio/2.html" target="_blank">Sketch 2</a> - controls position.</li>
+		<li><a href="trio/3.html" target="_blank">Sketch 3</a> - controls jitter orientation.</li>
+	</ul>
 
-  <video controls width="1100">
-    <source src="/media/3sketches.mp4"
-            type="video/mp4">
-    Sorry, your browser doesn't support embedded videos.
-</video>
+	<video controls width="1100">
+		<source src="/media/3sketches.mp4" type="video/mp4">
+		Sorry, your browser doesn't support embedded videos.
+	</video>
 
-  <h3>Instructions</h3>
-  <ol>
-    <li>Create a free account at <a href="https://ably.com/signup" target="_blank" rel="">ably.com</a>.</li>
-    <li>Create an Ably app and copy the default API key (`Root`). Alternatively you can create a new API key with only
-      `publish` and `subscribe` capabilities.</li>
-    <li>Open one of the above sketches.</li>
-    <li>Paste the API Key in the password field & click Connect.</li>
-    <li>Have two friends join this site and let them each choose another sketch.</li>
-    <li>Send them the API key so they can connect as well.</li>
-    <li>Play around with the sketches and see what happens!</li>
-  </ol>
+	<h3>Instructions</h3>
+	<ol>
+		<li>Create a free account at <a href="https://ably.com/signup" target="_blank" rel="">ably.com</a>.</li>
+		<li>Create an Ably app and copy the default API key (`Root`). Alternatively you can create a new API key with
+			only
+			`publish` and `subscribe` capabilities.</li>
+		<li>Open one of the above sketches.</li>
+		<li>Paste the API Key in the password field & click Connect.</li>
+		<li>Have two friends join this site and let them each choose another sketch.</li>
+		<li>Send them the API key so they can connect as well.</li>
+		<li>Play around with the sketches and see what happens!</li>
+	</ol>
 
-  <p>View source code on <a href="https://github.com/marcduiker/collab-creative-coding" target="_blank">GitHub</a>
-    👩‍💻.
-    Created by <a href="https://twitter.com/marcduiker" target="_blank">Marc Duiker</a> 🚀. Powered by
-    <a href="https://ably.com/" target="_blank"><img src="https://static.ably.dev/motif-black.svg?collab-creative-coding" width="20" alt="Ably"></a>.</p>
+	<p>View source code on <a href="https://github.com/marcduiker/collab-creative-coding" target="_blank">GitHub</a>
+		👩‍💻.
+		Created by <a href="https://twitter.com/marcduiker" target="_blank">Marc Duiker</a> 🚀. Powered by
+		<a href="https://ably.com/" target="_blank"><img
+				src="https://static.ably.dev/motif-black.svg?collab-creative-coding" width="20" alt="Ably"></a>.
+	</p>
 </body>
 
 </html>
