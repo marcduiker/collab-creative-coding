@@ -22,6 +22,10 @@ const dist12Name = 'dist12';
 const dist13Name = 'dist13';
 const dist23Name = 'dist23';
 
+let isSimulation = true;
+let noiseVal = 0.1;
+const noiseIncrement = 0.007;
+
 function setTextSettings() {
 	textFont('monospace');
 	textAlign(CENTER, CENTER);
@@ -137,6 +141,37 @@ function drawCircleShape() {
 	}
 	endShape(CLOSE);
 	pop();
+}
+
+function toggleSimulation() {
+	isSimulation = !isSimulation;
+}
+
+function drawSimulatedCoordinate1(noiseOffset) {
+	coordinate1 = drawSimulatedCoordinate(coordinate1, noiseOffset);
+}
+
+function drawSimulatedCoordinate2(noiseOffset) {
+	coordinate2 = drawSimulatedCoordinate(coordinate2, noiseOffset);
+}
+
+function drawSimulatedCoordinate3(noiseOffset) {
+	coordinate3 = drawSimulatedCoordinate(coordinate3, noiseOffset);
+}
+
+function drawSimulatedCoordinate(coordinate, noiseOffset) {
+	coordinate.x.pos = constrain(
+		noise(noiseVal + noiseOffset) * windowWidth,
+		0,
+		windowWidth
+	);
+	coordinate.y.pos = constrain(
+		noise(noiseVal + noiseOffset * 1.5) * windowHeight,
+		0,
+		windowHeight
+	);
+	noiseVal += noiseIncrement;
+	return coordinate;
 }
 
 function swapColors() {
